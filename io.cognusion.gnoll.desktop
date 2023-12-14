@@ -6,6 +6,6 @@ Name=Gnoll
 Comment=Versatile dice roller using cryptographically-secure randomness.
 Categories=Game;RolePlaying;
 
-Icon=Icon
+Icon=io.cognusion.gnoll
 Exec=gnoll
 Terminal=false
