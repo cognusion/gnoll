@@ -49,15 +49,17 @@ func main() {
 	ftext.Alignment = fyne.TextAlignLeading
 	ftext.SetSelectedIndex(5) // 6
 
-	// Checkbox
-	totalCheck := widget.NewCheck("Total?", nil)
-	totalCheck.SetChecked(true)
+	/*
+		// Checkbox
+		totalCheck := widget.NewCheck("Total?", nil)
+		totalCheck.SetChecked(true)
+	*/
 
 	// Button to roll NdF dice
 	rollButton := widget.NewButton("Roll!", func() {
 		faces := strings.TrimSpace(ftext.Selected)
 		num := strings.TrimSpace(ntext.Selected)
-		s, sum := RollNdF(num, faces, totalCheck.Checked)
+		s, sum := RollNdF(num, faces, true)
 		topLabel.SetText(s)
 		history = append(history, sum)
 
@@ -74,7 +76,7 @@ func main() {
 	})
 	clrButton.Importance = widget.DangerImportance
 
-	rollBox := container.New(layout.NewCenterLayout(), container.New(layout.NewHBoxLayout(), rollButton, totalCheck, clrButton))
+	rollBox := container.New(layout.NewCenterLayout(), container.New(layout.NewHBoxLayout(), rollButton, clrButton))
 
 	// centered, horizontal box for holding our entry boxes
 	diceBox := container.New(layout.NewCenterLayout(), container.New(layout.NewHBoxLayout(), ntext, dLabel, ftext))
