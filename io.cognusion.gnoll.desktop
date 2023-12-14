@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0.1
+Type=Application
+
+Name=Gnoll
+Comment=Versatile dice roller using cryptographically-secure randomness.
+Categories=Game;RolePlaying;
+
+Icon=Icon
+Exec=gnoll
+Terminal=false
