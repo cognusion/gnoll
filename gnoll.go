@@ -1,6 +1,7 @@
 package main
 
 import (
+	_ "embed"
 	"fmt"
 	"slices"
 	"sort"
@@ -14,9 +15,14 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
+//go:embed Icon.png
+var iconData []byte
+
 func main() {
 
 	a := app.NewWithID("io.cognusion.gnoll")
+	a.SetIcon(&fyne.StaticResource{StaticName: "Icon.png", StaticContent: iconData})
+
 	w := a.NewWindow("Gnoll")
 	var history = make([]int64, 0)
 
