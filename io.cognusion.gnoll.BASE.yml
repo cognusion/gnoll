@@ -1,0 +1,40 @@
+app-id: io.cognusion.gnoll
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+    - org.freedesktop.Sdk.Extension.golang
+command: gnoll
+
+finish-args:
+    - --share=ipc # Share IPC namespace with the host (necessary for X11).
+    - --socket=x11
+    - --device=dri # OpenGL rendering support.
+
+    # Only needed if building with -tags wayland.
+    #- --socket=wayland
+
+    # Needed to support desktop notifications.
+    - --talk-name=org.freedesktop.Notifications
+
+    # Allowing access to the home directory as example.
+    - --filesystem=home
+
+build-options:
+  env:
+    - GOBIN=/app/bin
+    - GOROOT=/usr/lib/sdk/golang
+
+modules:
+    - name: gnoll
+      buildsystem: simple
+      build-commands:
+        - $GOROOT/bin/go build -v -trimpath -o gnoll
+        - install -Dm00755 gnoll $FLATPAK_DEST/bin/gnoll
+        - install -Dm00644 Icon.png $FLATPAK_DEST/share/icons/hicolor/256x256/apps/$FLATPAK_ID.png
+        - install -Dm00644 $FLATPAK_ID.desktop $FLATPAK_DEST/share/applications/$FLATPAK_ID.desktop
+        - install -Dm00644 $FLATPAK_ID.appdata.xml $FLATPAK_DEST/share/appdata/$FLATPAK_ID.appdata.xml
+      sources:
+        - type: archive
+          url: "https://github.com/cognusion/gnoll/archive/refs/tags/v1.0.2.tar.gz"
+          sha256: b663803611d3cab1d49db650c776a7daf73757f97874846cff2a217e1c8357a1 # Update by running sha256sum on the file linked in the url.
