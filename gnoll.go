@@ -35,7 +35,6 @@ func main() {
 	// Label for historical stats
 	statsLabel := canvas.NewText("", nil)
 	statsLabel.TextSize = 10
-	//statsLabel := widget.NewLabel("")
 	statsLabel.Alignment = fyne.TextAlignTrailing
 
 	// Label for results
@@ -54,12 +53,6 @@ func main() {
 	ftext := widget.NewSelect(numberlist, nil)
 	ftext.Alignment = fyne.TextAlignLeading
 	ftext.SetSelectedIndex(5) // 6
-
-	/*
-		// Checkbox
-		totalCheck := widget.NewCheck("Total?", nil)
-		totalCheck.SetChecked(true)
-	*/
 
 	// Button to roll NdF dice
 	rollButton := widget.NewButton("Roll!", func() {
