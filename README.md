@@ -1,4 +1,4 @@
-# gnoll
+![gnoll](Icon.png)
 
 Originally a GTK4 dice roller, but rewritten in [Fyne](https://fyne.io/) because OMG packaging.
 
