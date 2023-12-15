@@ -18,7 +18,7 @@ finish-args:
     - --talk-name=org.freedesktop.Notifications
 
     # Allowing access to the home directory as example.
-    - --filesystem=home
+    #- --filesystem=home
 
 build-options:
   env:
