@@ -36,5 +36,5 @@ modules:
         - install -Dm00644 $FLATPAK_ID.appdata.xml $FLATPAK_DEST/share/appdata/$FLATPAK_ID.appdata.xml
       sources:
         - type: archive
-          url: "https://github.com/cognusion/gnoll/archive/refs/tags/v1.0.2.tar.gz"
-          sha256: b663803611d3cab1d49db650c776a7daf73757f97874846cff2a217e1c8357a1 # Update by running sha256sum on the file linked in the url.
+          url: "https://github.com/cognusion/gnoll/archive/refs/tags/v1.0.3.tar.gz"
+          sha256: 9af6ed6c77fcd52d4ae24aebc54226a5703baa3e4f3dab062bb68b5a4fbed741 # Update by running sha256sum on the file linked in the url.
