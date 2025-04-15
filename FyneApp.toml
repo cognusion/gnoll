@@ -5,4 +5,7 @@ Website = "https://github.com/cognusion/gnoll"
   Name = "Gnoll"
   ID = "io.cognusion.gnoll"
   Version = "1.0.3"
-  Build = 12
+  Build = 13
+
+[Migrations]
+  fyneDo = true
