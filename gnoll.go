@@ -4,7 +4,6 @@ import (
 	_ "embed"
 	"fmt"
 	"slices"
-	"sort"
 	"strings"
 
 	"fyne.io/fyne/v2"
@@ -28,7 +27,7 @@ func main() {
 
 	// build the numberlist
 	var numberlist = make([]string, 100)
-	for i := 0; i < 100; i++ {
+	for i := range 100 {
 		numberlist[i] = fmt.Sprintf("%d", i+1)
 	}
 
@@ -92,7 +91,7 @@ func median(data []int64) int64 {
 	dataCopy := make([]int64, len(data))
 	copy(dataCopy, data)
 
-	sort.Slice(dataCopy, func(i, j int) bool { return dataCopy[i] < dataCopy[j] })
+	slices.Sort(dataCopy)
 
 	var median int64
 	l := len(dataCopy)
