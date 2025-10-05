@@ -2,8 +2,12 @@ package main
 
 import (
 	_ "embed"
+	"flag"
 	"fmt"
+	"math/big"
+	"os"
 	"slices"
+	"strconv"
 	"strings"
 
 	"fyne.io/fyne/v2"
@@ -18,6 +22,56 @@ import (
 var iconData []byte
 
 func main() {
+
+	diceString := flag.String("dice", "", "If set, returns the result without creating a GUI. e.g. 2d10, 4d6.")
+	flag.Parse()
+
+	if diceString != nil && *diceString != "" {
+		ds := strings.Split(*diceString, "d")
+		if len(ds) > 2 {
+			fmt.Printf("Error creating dice '%s': Too many 'd's\n", *diceString)
+			os.Exit(1)
+		}
+		var (
+			n string = "1"
+			d string
+		)
+		if len(ds) == 1 {
+			d = ds[0]
+		} else {
+			n = ds[0]
+			d = ds[1]
+		}
+
+		die, err := NewDieFromString(d)
+		if err != nil {
+			fmt.Printf("Error creating dice '%s': %s\n", *diceString, err)
+			os.Exit(1)
+		}
+		ni, err := strconv.Atoi(n)
+		if err != nil {
+			fmt.Printf("Error creating N dice '%s': %s\n", *diceString, err)
+			os.Exit(1)
+		}
+
+		var (
+			t  = big.NewInt(0)
+			r  = big.NewInt(0)
+			ts string
+		)
+
+		for range ni {
+			r = die.Roll()
+			t = t.Add(t, r)
+			if ts == "" {
+				ts = r.String()
+			} else {
+				ts = fmt.Sprintf("%s + %s", ts, r.String())
+			}
+		}
+		fmt.Printf("Roll: %s = %s = %s\n", *diceString, ts, t.String())
+		os.Exit(0)
+	}
 
 	a := app.NewWithID("io.cognusion.gnoll")
 	a.SetIcon(&fyne.StaticResource{StaticName: "Icon.png", StaticContent: iconData})
