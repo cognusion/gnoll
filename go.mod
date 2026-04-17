@@ -1,8 +1,6 @@
 module github.com/cognusion/gnoll
 
-go 1.24.0
-
-toolchain go1.24.2
+go 1.25.0
 
 require fyne.io/fyne/v2 v2.7.1
 
@@ -34,9 +32,9 @@ require (
 	github.com/srwiley/rasterx v0.0.0-20220730225603-2ab79fcdd4ef // indirect
 	github.com/stretchr/testify v1.11.1 // indirect
 	github.com/yuin/goldmark v1.7.13 // indirect
-	golang.org/x/image v0.33.0 // indirect
+	golang.org/x/image v0.39.0 // indirect
 	golang.org/x/net v0.47.0 // indirect
 	golang.org/x/sys v0.38.0 // indirect
-	golang.org/x/text v0.31.0 // indirect
+	golang.org/x/text v0.36.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
